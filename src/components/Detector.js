@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 import Score from "./Score";
 import { makeStyles } from "@material-ui/core/styles";
 import Countdown from "../components/Countdown";
-
+import styled from "styled-components";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Text = styled.p`
-  font-family: "Press Start 2P", cursive;
+  font-family: "Sniglet", cursive;
 `;
 export default function Detector(props) {
   const classes = useStyles();
