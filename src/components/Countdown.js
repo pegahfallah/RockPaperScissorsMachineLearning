@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import RandomGenerator from "./RandomGenerator";
+import Detector from "./Detector";
 
 const TimeContainer = styled.div`
   font-family: "Press Start 2P", cursive;
@@ -16,7 +17,16 @@ const Text = styled.div`
   color: white;
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+
+const Robot = styled.div``;
+const GameSection = styled.div`
+  width: 40%;
+`;
 
 const Button = styled.button`
   border-radius: 25px;
@@ -56,17 +66,28 @@ const Countdown = () => {
 
     // clear interval on re-render to avoid memory leaks
     return () => clearInterval(intervalId);
+    // return () => ;
 
     // add timeLeft as a dependency to re-rerun the effect
     // when we update it
   }, [timeLeft, setPick]);
 
   return (
-    <Container>
-      <TimeContainer> {timeLeft} </TimeContainer>
-      <Button onClick={() => play()}>Click to Play</Button>
-      <Text> {pick} </Text>
-    </Container>
+    <>
+      <Container>
+        <GameSection>
+          <Detector pick={pick}></Detector>
+        </GameSection>
+        <GameSection>
+          <Robot>
+            <TimeContainer> {timeLeft} </TimeContainer>
+            <Button onClick={() => play()}>Click to Play</Button>
+            <Text> {pick} </Text>
+            <img src="https://media.istockphoto.com/vectors/cute-white-robot-character-vector-vector-id1187576166?k=6&m=1187576166&s=612x612&w=0&h=gTX8u5cr_hc9YcjfoGBfTUesIJAi2yNV_NDuErZwj3Y=" />
+          </Robot>
+        </GameSection>
+      </Container>
+    </>
   );
 };
 

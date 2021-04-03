@@ -1,5 +1,5 @@
 import React from "react";
-import Detector from "./Detector";
+import Detector from "../components/Detector";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import RandomGenerator from "../components/RandomGenerator";
@@ -8,53 +8,41 @@ import ReactTypingEffect from "react-typing-effect";
 
 const GameContainer = styled.div`
   margin: auto;
-  margin-top: 5%;
 `;
 
 const Container = styled.div`
-  display: flex;
-  background: #70a7c6;
-  justify-content: space-evenly;
-  align-content: center;
-  flex-direction: row;
+  margin-left: 10%;
+  width: 100%;
 `;
 
 const TextContainer = styled.div`
   margin: auto;
-  padding-top: 5%;
+  padding-top: 2%;
+  margin-bottom: 5%;
   background: #70a7c6;
   font-size: 50px;
   font-family: "Sniglet", cursive;
+  height: 20%;
 `;
 
 const Text = styled.p`
   font-family: "Press Start 2P", cursive;
 `;
 
-const useStyles = makeStyles((theme) => ({
-  main: { height: "100vh" },
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export default function Game() {
   const classes = useStyles();
 
   return (
-    <div>
+    <GameContainer>
       <TextContainer>
         <p>Play</p>
         <ReactTypingEffect eraseDelay="10000" text={["Rock Paper Scissors"]} />
       </TextContainer>
       <Container>
-        <GameContainer>
-          <div className={classes.main}>
-            <Detector />
-          </div>
-        </GameContainer>
-        <GameContainer>
-          <Countdown></Countdown>
-          <img src="https://media.istockphoto.com/vectors/cute-white-robot-character-vector-vector-id1187576166?k=6&m=1187576166&s=612x612&w=0&h=gTX8u5cr_hc9YcjfoGBfTUesIJAi2yNV_NDuErZwj3Y=" />
-        </GameContainer>
+        <Countdown></Countdown>
       </Container>
-    </div>
+    </GameContainer>
   );
 }
