@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Text = styled.p`
+  font-family: "Press Start 2P", cursive;
+`;
 export default function Detector(props) {
   const classes = useStyles();
   const webcamRef = useRef(null);
@@ -77,7 +80,7 @@ export default function Detector(props) {
 
     setInterval(() => {
       detect(model);
-    }, 1000);
+    }, 90);
   };
 
   const detect = async (model) => {
@@ -117,13 +120,13 @@ export default function Detector(props) {
             (prediction) =>
               prediction.probability >= 0.6 && (
                 <>
-                  <h2 key={prediction.className}>
+                  <Text key={prediction.className}>
                     {" "}
                     {prediction.className} : {prediction.probability.toFixed(2)}{" "}
                     {props.pick != undefined
                       ? console.log(prediction.className)
                       : ""}
-                  </h2>
+                  </Text>
                 </>
               )
           )}
